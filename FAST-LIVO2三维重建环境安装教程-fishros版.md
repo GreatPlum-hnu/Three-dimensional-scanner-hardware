@@ -1,6 +1,12 @@
-# FAST-LIVO2 手持设备环境安装教程（fishros 版）
+# FAST-LIVO2 三维重建设备环境安装教程（fishros 版）
 
-本文档用于在 Ubuntu 20.04 环境下安装 ROS Noetic，并配置、编译、运行 FAST-LIVO2。
+本文档用于在 Ubuntu 20.04 环境下安装 ROS Noetic，并配置、编译 FAST-LIVO2 的基础算法环境。
+
+本文档只面向 Livox MID360 手持三维重建设备方案。MID360、海康相机、硬件同步器和 ROS 驱动安装见下一篇：
+
+```text
+FAST-LIVO2三维重建硬件同步器与驱动安装-MID360版.md
+```
 
 与原教程相比，本文档做了两处调整：
 
@@ -12,7 +18,8 @@
 - Ubuntu 20.04
 - ROS Noetic
 - FAST-LIVO2
-- Livox Avia 或兼容数据包
+- Livox MID360
+- 海康工业相机
 
 ## 一、安装 ROS Noetic
 
@@ -176,11 +183,17 @@ unit_complex_.imag(0.);
 然后编译安装：
 
 ```bash
-mkdir build
+mkdir -p build
 cd build
 cmake ..
 make -j$(nproc)
 sudo make install
+```
+
+如果电脑内存较小，可以将 `make -j$(nproc)` 改为：
+
+```bash
+make -j2
 ```
 
 ## 五、创建 Catkin 工作空间
@@ -212,6 +225,12 @@ git clone https://github.com/hku-mars/FAST-LIVO2.git
 cd ~/catkin_ws
 ```
 
+安装工作空间依赖：
+
+```bash
+rosdepc install --from-paths src --ignore-src -r -y
+```
+
 编译：
 
 ```bash
@@ -237,29 +256,27 @@ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-## 七、运行 FAST-LIVO2 示例
+## 七、检查 FAST-LIVO2 环境
 
-先准备好 FAST-LIVO2 支持的数据包，例如 Livox Avia 的 rosbag。
-
-启动算法：
+编译完成后，可以先检查 ROS 是否能识别 FAST-LIVO2 包：
 
 ```bash
-roslaunch fast_livo mapping_avia.launch
+source ~/catkin_ws/devel/setup.bash
+rospack find fast_livo
 ```
 
-新开一个终端，播放数据包：
+如果输出 FAST-LIVO2 的本地路径，说明工作空间已经被 ROS 正确识别。
+
+继续检查 launch 文件是否存在：
 
 ```bash
-rosbag play YOUR_DOWNLOADED.bag
+roscd fast_livo
+ls launch
 ```
 
-请将 `YOUR_DOWNLOADED.bag` 替换为实际 rosbag 文件路径，例如：
+注意：FAST-LIVO2 官方仓库默认提供的是 AVIA 示例配置。本文档面向 MID360，不建议把 `mapping_avia.launch` 直接当作 MID360 最终配置使用。
 
-```bash
-rosbag play ~/bags/avia_demo.bag
-```
-
-如果配置正常，RViz 中会显示实时构建的点云地图和轨迹。
+完成本篇后，继续进行 MID360、海康相机、硬件同步器和 ROS 驱动安装。
 
 ## 八、常见问题
 
