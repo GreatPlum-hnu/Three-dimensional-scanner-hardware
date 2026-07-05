@@ -19,10 +19,10 @@
 ## 文档阅读顺序
 
 1. [三维重建硬件清单](三维重建硬件清单.md)
-2. [FAST-LIVO2 三维重建环境安装教程（fishros 版）](FAST-LIVO2三维重建环境安装教程-fishros版.md)
-3. [FAST-LIVO2 三维重建硬件同步器与驱动安装（MID360 版）](FAST-LIVO2三维重建硬件同步器与驱动安装-MID360版.md)
-4. [FAST-LIVO2 三维重建相机内参与雷达相机外参标定教程](FAST-LIVO2三维重建相机内参与雷达相机外参标定教程.md)
-5. [FAST-LIVO2 输出数据导入 COLMAP 三维重建教程](FAST-LIVO2输出数据导入COLMAP三维重建教程.md)
+2. [FAST-LIVO2 前端建图环境安装教程（fishros 版）](FAST-LIVO2前端建图环境安装教程-fishros版.md)
+3. [FAST-LIVO2 前端建图硬件同步器与驱动安装（MID360 版）](FAST-LIVO2前端建图硬件同步器与驱动安装-MID360版.md)
+4. [FAST-LIVO2 前端建图相机内参与雷达相机外参标定教程](FAST-LIVO2前端建图相机内参与雷达相机外参标定教程.md)
+5. [FAST-LIVO2 输出数据导入 Postshot 高斯泼溅重建教程](FAST-LIVO2输出数据导入Postshot高斯泼溅重建教程.md)
 
 ## 一键启动
 

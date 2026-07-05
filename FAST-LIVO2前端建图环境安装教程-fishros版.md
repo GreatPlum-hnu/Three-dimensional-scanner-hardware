@@ -1,11 +1,11 @@
-# FAST-LIVO2 三维重建设备环境安装教程（fishros 版）
+# FAST-LIVO2 前端建图环境安装教程（fishros 版）
 
 本文档用于在 Ubuntu 20.04 环境下安装 ROS Noetic，并配置、编译 FAST-LIVO2 的基础算法环境。
 
-本文档只面向 Livox MID360 手持三维重建设备方案。MID360、海康相机、硬件同步器和 ROS 驱动安装见下一篇：
+本文档只面向 Livox MID360 前端建图设备方案。MID360、海康相机、硬件同步器和 ROS 驱动安装见下一篇：
 
 ```text
-FAST-LIVO2三维重建硬件同步器与驱动安装-MID360版.md
+FAST-LIVO2前端建图硬件同步器与驱动安装-MID360版.md
 ```
 
 与原教程相比，本文档做了两处调整：

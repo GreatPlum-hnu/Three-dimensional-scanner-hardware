@@ -1,4 +1,4 @@
-# FAST-LIVO2 三维重建设备教程：硬件同步器与驱动安装（MID360 版）
+# FAST-LIVO2 前端建图硬件同步器与驱动安装教程（MID360 版）
 
 本文档基于 `scan2.world` 的 FAST-LIVO2 手持三维重建设备教程 2 重新整理，只保留 Livox MID360 相关内容。
 
