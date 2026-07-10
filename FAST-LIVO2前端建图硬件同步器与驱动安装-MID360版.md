@@ -514,13 +514,29 @@ rosbag info mid360_livo_data.bag
 
 ## 十三、验证硬件同步是否生效
 
-录制或播放 rosbag 时，可以先检查各话题时间戳是否正常更新：
+如果使用刚才实时启动的雷达和相机话题进行验证，可以保持驱动运行，直接检查各话题的时间戳和频率。
+
+如果要使用已经录制好的 rosbag 进行验证，应先关闭之前启动的 MID360 雷达驱动和相机驱动，避免实时驱动与 rosbag 同时发布同名话题，导致数据混在一起。保留 `roscore` 运行，然后在新的终端中播放 rosbag：
+
+```bash
+rosbag play mid360_livo_data.bag
+```
+
+如果 `roscore` 也已经关闭，则先重新启动：
+
+```bash
+roscore
+```
+
+再打开另一个终端播放 rosbag。播放期间，在新的终端中检查各话题时间戳是否正常更新：
 
 ```bash
 rostopic echo -n 5 /livox/lidar/header/stamp
 rostopic echo -n 5 /livox/imu/header/stamp
 rostopic echo -n 5 /left_camera/image/header/stamp
 ```
+
+因此，验证顺序为：**关闭实时雷达和相机驱动（仅 rosbag 回放验证时）→ 播放 rosbag → 检查时间戳和话题频率**。如果是在采集现场直接验证实时硬件同步，则不需要关闭驱动，也不需要播放 rosbag。
 
 再检查相机触发频率是否稳定：
 
